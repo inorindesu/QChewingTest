@@ -1,0 +1,12 @@
+QChewingTest is a QT software that can be used to observe the behavior
+of libChewing, an input method editor library.
+
+If your libChewing is not installed in default location (/usr), please
+modify CHEWING_ROOT in CMakeLists.txt before building.
+
+To run this program, configure and build it by:
+
+  mkdir build
+  cd build
+  cmake ../
+  make
