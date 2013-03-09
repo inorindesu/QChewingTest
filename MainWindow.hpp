@@ -29,7 +29,8 @@ private:
   QLabel* _lblBuffer;
   QLabel* _lblCommit;
   QLabel* _lblAux;
-  QLineEdit* _txtLine;
+  //QLineEdit* _txtLine;
+  QLabel* _lblLine;
 protected:
   void keyPressEvent(QKeyEvent* evt);
 

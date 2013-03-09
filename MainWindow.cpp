@@ -25,8 +25,7 @@ MainWindow::MainWindow()
   this->_lblCommit = new QLabel();
   this->_lblBuffer = new QLabel();
   this->_lblAux = new QLabel();
-  this->_txtLine = new QLineEdit();
-  this->_txtLine->setReadOnly(true);
+  this->_lblLine = new QLabel();
 
   chewing_Init("/usr/share/chewing", ".");
   this->_ct = chewing_new();
@@ -45,7 +44,7 @@ MainWindow::MainWindow()
   layout->addWidget(new QLabel("Aux buffer"));
   layout->addWidget(this->_lblAux);
   layout->addWidget(new QLabel("Final output"));
-  layout->addWidget(this->_txtLine);
+  layout->addWidget(this->_lblLine);
   container->setLayout(layout);
   this->setCentralWidget(container);
 }
@@ -76,6 +75,10 @@ void MainWindow::keyPressEvent(QKeyEvent* evt)
     }
   else if(key == Qt::Key_Backspace)
     {
+      /*
+       * When there's a text input box (QLineEdit), 
+       * Qt::Key_Backspace is consumed by that input box.
+       */
       chewing_handle_Backspace(this->_ct);
     }
   else if(key == Qt::Key_Escape)
@@ -99,7 +102,7 @@ void MainWindow::keyPressEvent(QKeyEvent* evt)
   if(chewing_commit_Check(this->_ct))
     {
       this->_lblCommit->setText(comString);
-      this->_txtLine->setText(this->_txtLine->text() + comString);
+      this->_lblLine->setText(this->_lblLine->text() + comString);
     }
   else
     {
